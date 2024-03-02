@@ -1,11 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Retro Forum</title>
-</head>
-<body>
-    
-</body>
+
+    <!-- css file -->
+    <link rel="stylesheet" href="styles/style.css" />
+
+    <!-- daisy UI + tailwindCss -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- font-Awesome -->
+    <script
+      src="https://kit.fontawesome.com/272c96886d.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header class="container mx-auto px-8 lg:px-20">
+      <nav class="my-6 lg:my-14">
+        <div class="flex justify-between items-center">
+          <div><img class="w-full" src="./images/logo.png" alt=""></div>
+
+          <div class="flex gap-6 ml-12  lg:ml-[55%] ">
+            <p class="bg-[#12132D05] rounded-full p-6 "><i class="fa-solid fa-house"></i></p>
+            <p class="bg-[#12132D05] rounded-full p-6 "><i class="fa-solid fa-pen"></i></p>
+            <p class="bg-[#12132D05] rounded-full p-6 "><i class="fa-solid fa-user-plus"></i></p>
+            <p class="bg-[#12132D05] rounded-full p-6 "><i class="fa-regular fa-flag"></i></p>
+          </div>
+
+          <div><button class="bg-[#797DFC] py-4 px-6 lg:px-10  rounded-3xl text-white font-semibold lg:font-bold text-xl lg:text-2xl">Sign In</button></div>
+        </div>
+      </nav>
+    </header>
+    <main></main>
+    <footer></footer>
+  </body>
 </html>
