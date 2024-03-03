@@ -37,16 +37,28 @@
           </div>
 
           <div class="flex gap-3 lg:gap-6 lg:ml-[55%]">
-            <p class="bg-[#12132D05] rounded-full p-3 lg:p-6">
+            <p
+              class="bg-[#12132D05] rounded-full p-3 lg:p-6 tooltip-bottom tooltip"
+              data-tip="Home"
+            >
               <i class="fa-solid fa-house"></i>
             </p>
-            <p class="bg-[#12132D05] rounded-full p-3 lg:p-6">
+            <p
+              class="bg-[#12132D05] rounded-full p-3 lg:p-6 tooltip-bottom tooltip"
+              data-tip="Edit"
+            >
               <i class="fa-solid fa-pen"></i>
             </p>
-            <p class="bg-[#12132D05] rounded-full p-3 lg:p-6">
+            <p
+              class="bg-[#12132D05] rounded-full p-3 lg:p-6 tooltip-bottom tooltip"
+              data-tip="Add "
+            >
               <i class="fa-solid fa-user-plus"></i>
             </p>
-            <p class="bg-[#12132D05] rounded-full p-3 lg:p-6">
+            <p
+              class="bg-[#12132D05] rounded-full p-3 lg:p-6 tooltip-bottom tooltip"
+              data-tip="Flag"
+            >
               <i class="fa-regular fa-flag"></i>
             </p>
           </div>
@@ -63,7 +75,7 @@
 
       <section>
         <div
-          class="h-full  w-full rounded-2xl bg-no-repeat bg-cover"
+          class="h-full w-full rounded-2xl bg-no-repeat bg-cover"
           style="background-image: url(./images/Rectangle\ 1.png)"
         >
           <div
@@ -126,7 +138,7 @@
     </header>
 
     <!-- main section start here -->
-    <main  class="container mx-auto px-8 lg:px-20">
+    <main class="container mx-auto px-8 lg:px-20">
       <section class="my-12 lg:my-24">
         <h2
           class="text-center text-[#12132D] text-2xl lg:text-5xl font-bold lg:font-black"
@@ -138,25 +150,20 @@
           app. The integrated testing features allow for a streamlined .
         </p>
         <div class="flex flex-col lg:flex-row gap-10 justify-between">
-          <div id="forum-container">
-
-
-
-          
-
-
-          </div>
-         <div>
-          <div class="flex justify-between lg:gap-40 bg-[#12132D0D] rounded-xl p-7">
-            <div class="text-[#12132D] font-bold text-xl">Title</div>
-            <div>
-              <p class="text-[#12132D]">
-                <span><i class="fa-solid fa-check-double"></i></span> Mark as
-                read (<span id="read-as">0</span>)
-              </p>
+          <div id="forum-container"></div>
+          <div class="w-full lg:w-[50%]">
+            <div
+              class="flex justify-between lg:gap-40 bg-[#12132D0D] rounded-xl p-7"
+            >
+              <div class="text-[#12132D] font-bold text-xl">Title</div>
+              <div>
+                <p class="text-[#12132D]">
+                  <span><i class="fa-solid fa-check-double"></i></span> Mark as
+                  read (<span id="read-as">0</span>)
+                </p>
+              </div>
             </div>
           </div>
-         </div>
         </div>
       </section>
       <section class="my-9 lg:my-20">
@@ -202,7 +209,10 @@
           Yes, you can run unit tests and view the results directly within the
           app. The integrated testing features allow for a streamlined .
         </p>
-        <div></div>
+        <div
+          id="post-container"
+          class="grid grid-cols-1 lg:grid-cols-3  my-12 gap-6 lg:gap-24" 
+        ></div>
       </section>
     </main>
     <footer class="m-0 bg-[#12132D0D]">
