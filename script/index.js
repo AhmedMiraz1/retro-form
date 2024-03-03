@@ -1,18 +1,22 @@
 const loadForum = async () => {
+
+  document.getElementById('loading-spiner').classList.remove('hidden')
   const res = await fetch(
     `https://openapi.programming-hero.com/api/retro-forum/posts`
   );
   const data = await res.json();
+  const postId =data.posts
 
   const forumContainer = document.getElementById("forum-container");
-  data.posts.forEach((post) => {
+  postId.forEach((post) => {
+    document.getElementById('loading-spiner').classList.add('hidden')
     const div = document.createElement("div");
     div.innerHTML = `<div
         class="mb-7 w-full lg:w-[90%]"
       >
         <div class="flex gap-4 lg:gap-20  bg-[#12132D0D]  rounded-xl p-10 ">
         <div class="indicator">
-        <span class="indicator-item badge badge-secondary bg-green-600 border-none"></span> 
+        <span class="indicator-item badge ${ post.isActive ? "bg-green-500" : "bg-red-500" }"></span>
         <div class="grid w-32 h-32 bg-base-300 place-items-center"><img src="${post.image}" alt=""></div>
       </div>
         
@@ -34,7 +38,7 @@ const loadForum = async () => {
               </div>
               <div>
                 <p class="bg-[#10B981] rounded-full p-1">
-                  <button onclick="title()" ><i class="fa-solid fa-envelope-open"></i></button>
+                  <button onclick="getId(${post.title})" ><i class="fa-solid fa-envelope-open"></i></button>
                 </p>
               </div>
             </div>
@@ -45,13 +49,40 @@ const loadForum = async () => {
     forumContainer.appendChild(div);
   });
 };
+
+
+const getId = (postId) => {
+  const  titleCount = document.getElementById('title-count')
+  const div = document.createElement("div");
+  div.innerHTML =`
+  <h2>a</h2>
+  <p>1</p>`
+
+ titleCount.appendChild(div)
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
 const postLoader = async () => {
+
+  document.getElementById('loading-spiner2').classList.remove('hidden')
   const res = await fetch(
     `https://openapi.programming-hero.com/api/retro-forum/latest-posts`
   );
   const data = await res.json();
   const postContainer = document.getElementById("post-container");
   data.forEach((item) => {
+    document.getElementById('loading-spiner2').classList.add('hidden')
     const div = document.createElement("div");
 
     div.innerHTML = `    <div class="card w-96 bg-base-100 shadow-xl">
@@ -78,9 +109,22 @@ const postLoader = async () => {
   });
 };
 
-const title = (post) => {
-  console.log("click");
-};
+
+
+
+const handelSearch=()=>{
+  const value = document.getElementById('search-box').value
+
+  console.log(value)
+
+  if(value){
+    loadForum(value)
+  }
+  else{
+    alert('please enter valid text')
+  }
+
+}
 
 postLoader();
 

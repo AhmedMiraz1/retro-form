@@ -93,11 +93,14 @@
               </p>
               <div class="bg-white p-2 rounded-2xl flex justify-between">
                 <input
+                  id="search-box"
                   class="p-2 w-full"
                   type="text"
                   placeholder="Search here anything"
                 />
                 <button
+                  onclick="handelSearch()"
+                  id="search-btn"
                   class="bg-[#797DFC] py-3 px-4 lg:px-8 rounded-3xl text-white font-semibold lg:font-bold text-lg lg:text-xl"
                 >
                   Search
@@ -149,6 +152,13 @@
           Yes, you can run unit tests and view the results directly within the
           app. The integrated testing features allow for a streamlined .
         </p>
+
+        <div id="loading-spiner" class=" text-center hidden  my-14">
+          <span class="loading loading-bars loading-xs"></span>
+          <span class="loading loading-bars loading-sm"></span>
+          <span class="loading loading-bars loading-md"></span>
+          <span class="loading loading-bars loading-lg"></span>
+        </div>
         <div class="flex flex-col lg:flex-row gap-10 justify-between">
           <div id="forum-container"></div>
           <div class="w-full lg:w-[50%]">
@@ -163,8 +173,11 @@
                 </p>
               </div>
             </div>
+            <div id="title-count"></div>
           </div>
         </div>
+
+        
       </section>
       <section class="my-9 lg:my-20">
         <div class="bg-[#12132D] rounded-2xl">
@@ -209,9 +222,17 @@
           Yes, you can run unit tests and view the results directly within the
           app. The integrated testing features allow for a streamlined .
         </p>
+
+
+        <div id="loading-spiner2" class=" text-center hidden  my-14">
+          <span class="loading loading-bars loading-xs"></span>
+          <span class="loading loading-bars loading-sm"></span>
+          <span class="loading loading-bars loading-md"></span>
+          <span class="loading loading-bars loading-lg"></span>
+        </div>
         <div
           id="post-container"
-          class="grid grid-cols-1 lg:grid-cols-3  my-12 gap-6 lg:gap-24" 
+          class="grid grid-cols-1 lg:grid-cols-3 my-12 gap-6 lg:gap-24"
         ></div>
       </section>
     </main>
