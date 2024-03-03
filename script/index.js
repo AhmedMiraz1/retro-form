@@ -10,16 +10,16 @@ const loadForum =async () => {
         
         const div = document.createElement('div')
         div.innerHTML=`<div
-        class="flex flex-col lg:flex-row bg-[#12132D0D] rounded-xl p-10 gap-5 mb-7 justify-between"
+        class="mb-7"
       >
-        <div class="flex gap-5">
-          <div class="w-[72px]">
-            <img  class="rounded-xl " src="${post.image}" alt="" />
+        <div class="flex justify-between bg-[#12132D0D]  rounded-xl p-10 ">
+          <div class="w-[150px]">
+            <img  class="rounded-xl  " src="${post.image}" alt="" />
             
           </div>
           <sup>0</sup>
           <div>
-            <div class="flex gap-6 mb-6">
+            <div class="flex justify-evenly mb-6">
               <p>#${post.category}</p>
               <p class="">Author : ${post.author?.name}</p>
             </div>
@@ -28,35 +28,35 @@ const loadForum =async () => {
               ${post.description}
             </p>
             <hr />
-            <div class="flex justify-between mt-6">
-              <div class="flex gap-7">
+            <div class="flex  justify-between  mt-6">
+              <div class="flex gap-7 ">
                 <p><i class="  fa-solid fa-message"></i> ${post.comment_count}</p>
                 <p><i class="  fa-solid fa-eye"></i>${post.view_count}</p>
                 <p><i class="  fa-regular fa-clock"></i> ${post.posted_time} min</p>
               </div>
               <div>
                 <p class="bg-[#10B981] rounded-full p-1">
-                  <button><i class="fa-solid fa-envelope-open"></i></button>
+                  <button onclick="title()" ><i class="fa-solid fa-envelope-open"></i></button>
                 </p>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="flex justify-between gap-8">
-          <div>Title</div>
-          <div>
-            <p>
-              <span><i class="fa-solid fa-check-double"></i></span> Mark as
-              read (<span>0</span>)
-            </p>
-          </div>
-        </div>
       </div>`
 
       forumContainer.appendChild(div)
+
     })
+    
 }
+
+const title = () =>{
+   console.log('click')
+}
+
+
+
+
 
 
 
