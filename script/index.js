@@ -1,36 +1,11 @@
-const handlePostTitle = (title, views) => {
-  const readAs = document.getElementById("read-as");
-  
+const handleForumPost = (data) => {
+  const forumContainer = document.getElementById("forum-container");
+  forumContainer.innerHTML = "";
+  data.posts.forEach((item) => {
+    const post = item;
 
-  const titleCount = document.getElementById("title-count");
-  const div = document.createElement("div");
-  div.innerHTML = `<div class="flex my-3 justify-between"><h2>${title}</h2>
-  <p><i class="fa-regular fa-eye"></i> ${views}</p></div>`;
-
-  titleCount.appendChild(div);
-};
-
-const handelSearch = () => {
-  const value = document.getElementById("search-box").value;
-
-  console.log(value);
-
-  if (value) {
-    loadForum(value);
-  } else {
-    alert("please enter valid text");
-  }
-};
-
-fetch(`https://openapi.programming-hero.com/api/retro-forum/posts`)
-  .then((res) => res.json())
-  .then((data) => {
-    const forumContainer = document.getElementById("forum-container");
-    data.posts.forEach((item) => {
-      const post = item;
-
-      const div = document.createElement("div");
-      div.innerHTML = `<div
+    const div = document.createElement("div");
+    div.innerHTML = `<div
         class="mb-7 w-full lg:w-[90%]"
       >
         <div class="flex gap-4 lg:gap-20  bg-[#12132D0D]  rounded-xl p-10 ">
@@ -38,7 +13,7 @@ fetch(`https://openapi.programming-hero.com/api/retro-forum/posts`)
         <span class="indicator-item badge ${
           post.isActive ? "bg-green-500" : "bg-red-500"
         }"></span>
-        <div class="grid w-32 h-32 bg-base-300 place-items-center"><img src="${
+        <div class="grid w-32 h-32 bg-base-300 place-items-center "><img class="rounded-2xl" src="${
           post.image
         }" alt=""></div>
       </div>
@@ -65,8 +40,8 @@ fetch(`https://openapi.programming-hero.com/api/retro-forum/posts`)
               <div>
                 <p class="bg-[#10B981] rounded-full p-1">
                 <button onclick="handlePostTitle('${post.title}', ${
-        post.view_count
-      })" ><i class="fa-solid fa-envelope-open"></i></button>
+      post.view_count
+    })" ><i class="fa-solid fa-envelope-open"></i></button>
                 </p>
               </div>
             </div>
@@ -74,11 +49,45 @@ fetch(`https://openapi.programming-hero.com/api/retro-forum/posts`)
         </div>
       </div>`;
 
-      document.getElementById("loading-spinner").classList.add("hidden");
-      // document.getElementById("loading-spinner2").classList.add("hidden");
-      forumContainer.appendChild(div);
-    });
+    document.getElementById("loading-spinner").classList.add("hidden");
+    // document.getElementById("loading-spinner2").classList.add("hidden");
+    forumContainer.appendChild(div);
   });
+};
+
+let count = 0;
+
+const handlePostTitle = (title, views) => {
+
+  // console.log(handlePostTitle)
+  count++;
+
+  const titleCount = document.getElementById("title-count");
+  const div = document.createElement("div");
+  div.innerHTML = `<div class="flex my-3 justify-between"><h2>${title}</h2>
+  <p><i class="fa-regular fa-eye"></i> ${views}</p></div>`;
+
+  titleCount.appendChild(div);
+
+  countComment("read-as", count);
+};
+
+function countComment(id, value) {
+  document.getElementById(id).innerText = value;
+}
+
+fetch(`https://openapi.programming-hero.com/api/retro-forum/posts`)
+  .then((res) => res.json())
+  .then(handleForumPost);
+
+const handelSearch = async () => {
+  const category = document.getElementById("search-box").value;
+  if (!category) return;
+  const url = `https://openapi.programming-hero.com/api/retro-forum/posts?category=${category}`;
+  const response = await fetch(url);
+  const data = await response.json();
+  handleForumPost(data);
+};
 
 fetch(`https://openapi.programming-hero.com/api/retro-forum/latest-posts`)
   .then((res) => res.json())
